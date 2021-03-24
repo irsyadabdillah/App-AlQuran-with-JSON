@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">QuranJSON</string>
+    <string name="al_fatihah">Al-Fatihah</string>
+    <string name="arabic">Arabic</string>
+</resources>
