@@ -1,4 +1,4 @@
-package com.irzstudio.quranjson.data
+package com.irzstudio.quranjson.dataquran
 
 class QuranTranslations(
 

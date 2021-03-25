@@ -1,4 +1,6 @@
-package com.irzstudio.quranjson.data
+package com.irzstudio.quranjson.dataquran
+
+
 
 data class QuranData(
     val name : String,

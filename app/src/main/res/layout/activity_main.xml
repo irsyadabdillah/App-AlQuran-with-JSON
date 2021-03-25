@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -25,6 +25,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_surah"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"/>
 
 </FrameLayout>
