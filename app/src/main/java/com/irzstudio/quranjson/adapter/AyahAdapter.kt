@@ -5,11 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.irzstudio.quranjson.R
-import com.irzstudio.quranjson.dataquran.QuranData
-import com.irzstudio.quranjson.datasurah.SurahData
 import com.irzstudio.quranjson.datasurah.SurahVerses
 import kotlinx.android.synthetic.main.item_ayah.view.*
-import kotlinx.android.synthetic.main.item_surah.view.*
 
 class AyahAdapter (private val list: ArrayList<SurahVerses>, private val noSurah: Int): RecyclerView.Adapter<AyahAdapter.AyahViewHolder>(){
     inner class AyahViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){

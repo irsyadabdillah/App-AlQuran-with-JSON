@@ -39,4 +39,10 @@ class SurahAdapter(private val list: ArrayList<QuranData>):RecyclerView.Adapter<
     override fun getItemCount(): Int {
         return list.size
     }
+
+    fun setData(newData: ArrayList<QuranData>){
+        list.clear()
+        list.addAll(newData)
+        notifyDataSetChanged()
+    }
 }

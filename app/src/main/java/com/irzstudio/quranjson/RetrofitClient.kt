@@ -10,6 +10,7 @@ object RetrofitClient {
 
     val instance : Api by lazy {
 
+        //untuk mengecek error JSON
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
         val client: OkHttpClient = OkHttpClient.Builder().addInterceptor(logging).build()

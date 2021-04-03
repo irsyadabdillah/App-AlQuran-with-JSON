@@ -16,7 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class   MainActivity : AppCompatActivity() {
 
     private lateinit var adapter: SurahAdapter
     private val list = ArrayList<QuranData>()
@@ -25,32 +25,40 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        adapter = SurahAdapter(list)
+        rv_surah.setHasFixedSize(true)
+        rv_surah.adapter = adapter
+        rv_surah.layoutManager = LinearLayoutManager(this@MainActivity)
+        adapter.onClickListener = object : OnSurahListener {
+            override fun onClick(quranData: QuranData) {
+                val intent = Intent(applicationContext, SurahActivity::class.java)
+                intent.putExtra("surahnumber", quranData.number_of_surah )
+                startActivity(intent)
+            }
+        }
+
+        loadData()
+
+    }
+
+    private fun loadData(){
         progressBar.visibility = View.VISIBLE
         rv_surah.visibility = View.GONE
         tv_error.visibility = View.GONE
         RetrofitClient.instance.getQuran().enqueue(object : Callback<ArrayList<QuranData>> {
-
-
             override fun onResponse(
                 call: Call<ArrayList<QuranData>>,
                 response: Response<ArrayList<QuranData>>) {
-                response.body()?.let { list.addAll(it) }
+                response.body()?.let {
+                    list.clear()
+                    list.addAll(it)
+                }
 
-
-                adapter = SurahAdapter(list)
-                rv_surah.setHasFixedSize(true)
-                rv_surah.adapter = adapter
-                rv_surah.layoutManager = LinearLayoutManager(this@MainActivity)
                 rv_surah.visibility = View.VISIBLE
                 progressBar.visibility = View.GONE
 
-                adapter.onClickListener = object : OnSurahListener {
-                    override fun onClick(quranData: QuranData) {
-                        val intent = Intent(applicationContext, SurahActivity::class.java)
-                        intent.putExtra("surahnumber", quranData.number_of_surah )
-                        startActivity(intent)
-                    }
-                }
+                adapter.setData(list)
+
             }
 
             override fun onFailure(call: Call<ArrayList<QuranData>>, t: Throwable) {
@@ -60,8 +68,6 @@ class MainActivity : AppCompatActivity() {
                 progressBar.visibility = View.GONE
             }
         })
-
-
     }
 }
 
